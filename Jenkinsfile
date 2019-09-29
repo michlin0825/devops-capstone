@@ -1,7 +1,7 @@
 pipeline {
     environment {
     registry = "michlin0825/devops-capstone"
-    registryCredential = 'docker-hub'
+    registryCredential = 'docker_hub'
     }
     
     agent any
@@ -10,7 +10,7 @@ pipeline {
         stage ('Lint HTML') {
             steps {
                 sh 'tidy -q -e *.html'
-               
+                sh 'pylint --disable=R,C,W1203 app.py'
             }
         }
 
@@ -31,7 +31,7 @@ pipeline {
         stage('Deploy Image') {
             steps {
                 script {
-                    withDockerRegistry([ credentialsId: "docker-hub", url: "" ]) {
+                    withDockerRegistry([ credentialsId: "docker_hub", url: "" ]) {
                     sh 'docker push michlin0825/devops-capstone'
                     }
                 }
