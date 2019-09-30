@@ -10,7 +10,7 @@ pipeline {
         stage ('Lint HTML') {
             steps {
                 sh 'tidy -q -e *.html'
-            
+                sh 'pylint3 --disable=R,C,W1203 app.py'
             }
         }
 
