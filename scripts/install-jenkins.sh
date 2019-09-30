@@ -2,7 +2,7 @@
 
 # -------------------------------Pre-requiste-----------------------------------
 # sudo su -i (Make sure to login as root)
-# clone repo https://github.com/adeelbarki/capstone-clouddevops-docker-jenkins-aws-eks.git
+# clone repo https://github.com/michlin0825/devops-capstone.git
 # change permission on file in script folder
 # sudo chown ubuntu:ubuntu <filename> (optional)
 # chmod +x install_jenkins.sh
