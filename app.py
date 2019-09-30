@@ -1,12 +1,15 @@
+#!/usr/bin/env python
+"""does things"""
 from flask import Flask
 
-app = Flask(__name__)
+APP = Flask(__name__)
 
 
-@app.route("/")
+@APP.route("/")
 def home():
-    return "Hello World"
+    """does more things"""
+    return "Hello World from Michael."
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=80, debug=True) # specify port=80
+    APP.run(host='0.0.0.0', port=80, debug=True) # specify port=80
