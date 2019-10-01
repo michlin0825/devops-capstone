@@ -24,7 +24,7 @@ pipeline {
         stage('Building image') {
             steps {
                 script {
-                    sh 'sudo docker build --tag=michlin0825/devops-capstone .'
+                    sh 'docker build --tag=michlin0825/devops-capstone .'
                 }
             }
         }
@@ -33,7 +33,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry([ credentialsId: "docker_hub", url: "" ]) {
-                    sh 'sudo docker push michlin0825/devops-capstone'
+                    sh 'docker push michlin0825/devops-capstone'
                     }
                 }
             }
