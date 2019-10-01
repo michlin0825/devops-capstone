@@ -41,12 +41,12 @@ pipeline {
 
         stage ('Deploying to AWS EKS') {
             steps {
-                withAWS(region:'us-east-1',credentials:'AWS') {
                 script {
+                   sh 'aws sts get-caller-identity'
+                   sh 'aws eks --region us-east-1 update-kubeconfig --name pipeline'
+                   sh 'kubectl get svc' 
                    sh 'kubectl apply -f Deployment/webapp-deploy.yml'
-                    }
-                }
-            }
-        }         
+               }
+        }
     }
 }
