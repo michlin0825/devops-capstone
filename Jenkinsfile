@@ -7,7 +7,7 @@ pipeline {
     agent any
     stages {
         
-        stage ('Lint HTML') {
+        stage ('Linting HTML and Python files') {
             steps {
                 sh 'whoami'
                 sh 'tidy -q -e *.html'
@@ -21,7 +21,7 @@ pipeline {
             }
         }
 
-        stage('Building image') {
+        stage('Building Docker Image') {
             steps {
                 script {
                     sh 'docker build --tag=michlin0825/devops-capstone .'
@@ -29,7 +29,7 @@ pipeline {
             }
         }
 
-        stage('Deploy Image') {
+        stage('Uploading Docker Image') {
             steps {
                 script {
                     withDockerRegistry([ credentialsId: "docker_hub", url: "" ]) {
@@ -39,35 +39,11 @@ pipeline {
             }
         }
 
-        stage ('Upload latest green deployment to AWS Loadbalancer') {
+        stage ('Deploying to AWS EKS') {
             steps {
                script {
                    // Latest
-                   sh 'kubectl apply -f Deployment/green-webapp-deploy.yml'
-               }
-            }
-        }
-
-        stage ('Remove old blue deployment from AWS Loadbalancer') {
-            steps {
-               script {
-                   sh 'kubectl delete deploy/web-deployment-blue'
-               }
-            }
-        }
-
-        stage ('Add latest blue deployment to AWS Loadbalancer') {
-            steps {
-               script {
-                   sh 'kubectl apply -f Deployment/blue-webapp-deploy.yml'
-               }
-            }
-        }
-
-        stage ('Remove old green deployment from AWS Loadbalancer') {
-            steps {
-               script {
-                   sh 'kubectl delete deploy/web-deployment-green'
+                   sh 'kubectl apply -f Deployment/webapp-deploy.yml'
                }
             }
         }
