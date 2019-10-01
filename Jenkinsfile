@@ -9,8 +9,8 @@ pipeline {
         
         stage ('Linting HTML and Python files') {
             steps {
-                sh 'tidy -q -e *.html'
-                sh 'pylint --disable=R,C,W1203,W1202 app.py'
+                sh 'sudo tidy -q -e *.html'
+                sh 'sudo pylint --disable=R,C,W1203 app.py'
             }
         }
 
