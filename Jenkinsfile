@@ -44,7 +44,9 @@ pipeline {
                 withAWS(region:'us-east-1',credentials:'AWS') {
                 script {
                    sh 'kubectl apply -f Deployment/webapp-deploy.yml'
-               }
-        }
+                    }
+                }
+            }
+        }         
     }
 }
