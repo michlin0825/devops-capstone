@@ -8,7 +8,8 @@
 
 setup:
 	# Create python virtualenv & source it
-	apt-get -y install python3-venv
+	sudo apt-get update -y
+	sudo apt-get -y install python3-venv
 	python3 -m venv .devops
 	source .devops/bin/activate
 
