@@ -41,12 +41,10 @@ pipeline {
 
         stage ('Deploying to AWS EKS') {
             steps {
-               script {
-                   sh 'whoami'
-                   sh 'kubectl version --short --client'
+                withAWS(region:'us-east-1',credentials:'AWS') {
+                script {
                    sh 'kubectl apply -f Deployment/webapp-deploy.yml'
                }
-            }
         }
     }
 }
