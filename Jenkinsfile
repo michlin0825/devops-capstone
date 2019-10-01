@@ -43,6 +43,11 @@ pipeline {
                 withAWS(credentials: 'AWS', region: 'us-east-1') {
                     script {
                        sh 'echo "Hello World"'
+                       sh 'curl -o kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/bin/linux/amd64/kubectl'
+                       sh 'chmod +x ./kubectl'
+                       sh 'mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH'
+                       sh 'echo \'export PATH=$HOME/bin:$PATH\' >> ~/.bashrc'
+                       sh 'kubectl version --short --client'
                        sh 'kubectl get svc' 
                        sh 'kubectl apply -f Deployment/webapp-deploy.yml'
                     }
