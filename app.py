@@ -8,9 +8,7 @@ APP = Flask(__name__)
 @APP.route("/")
 def home():
     """Simple content for default rout."""
-    html = f"<h3>Hello Udacity!</h3><p>This is Michael Lin</p>\
-        <p>Code changed. blue/green deployment stages</p>"
-    return html.format(format)
+    return "Hello devops from Michel Lin"
 
 
 if __name__ == "__main__":
