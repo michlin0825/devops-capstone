@@ -7,10 +7,9 @@ pipeline {
     agent any
     stages {
         
-        stage ('Linting HTML and Python files') {
+        stage ('Linting Project Files') {
             steps {
-                sh 'tidy -q -e *.html'
-               
+                sh 'make all'               
             }
         }
 
@@ -38,11 +37,15 @@ pipeline {
             }
         }
 
-        stage ('Deploying to AWS EKS') {
+        stage ('Deploying to EKS') {
             steps {
                 withAWS(credentials: 'AWS', region: 'us-east-1') {
                     script {
-                       sh 'echo "Hello World"'
+                       sh 'pip install awscli --upgrade'
+                       sh 'curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp'
+                       sh 'sudo mv /tmp/eksctl /usr/local/bin'
+                       sh 'sleep 15m'
+                       sh 'eksctl version'
                        sh 'curl -o kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/bin/linux/amd64/kubectl'
                        sh 'chmod +x ./kubectl'
                        sh 'mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH'
