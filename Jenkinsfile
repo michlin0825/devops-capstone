@@ -9,7 +9,8 @@ pipeline {
         
         stage ('Linting Project Files') {
             steps {
-                sh 'sudo pip3 install virtualenv'
+                sh 'whoami'
+                sh 'pip3 install virtualenv'
                 sh 'virtualenv devops'                
                 sh 'source devops/bin/activate'
                 sh 'pip3 install -r requirements.txt'
