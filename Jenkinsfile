@@ -9,9 +9,9 @@ pipeline {
         
         stage ('Linting Project Files') {
             steps {
-                sh 'whoami'
-                sh 'sudo yum install python3-pip -y && pip3 install flask pylint && pylint app.py'
-                sh 'sudo yum install tidy -y && tidy -q -e *.html'         
+                sh 'pip3 install flask pylint'
+                sh 'pylint app.py'
+                sh 'tidy -q -e *.html'         
             }
         }
 
