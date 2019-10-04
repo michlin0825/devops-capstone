@@ -12,7 +12,7 @@ pipeline {
                 sh 'whoami'
                 sh 'pip3 install virtualenv'
                 sh 'python3 -m venv .devops'
-                sh 'source ./devops/bin/activate'
+                sh 'source .devops/bin/activate'
                 sh 'pip3 install -r requirements.txt'
                 sh 'pylint --disable=R,C,W1203 app.py'
                 sh 'tidy -q -e *.html'         
