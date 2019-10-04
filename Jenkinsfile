@@ -10,7 +10,7 @@ pipeline {
         stage ('Linting Project Files') {
             steps {
                 sh 'whoami'
-                sh 'sudo pip3 install -r requirements.txt'
+                sh 'pip3 install -r requirements.txt'
                 sh 'pylint --disable=R,C,W1203 app.py'
                 sh 'tidy -q -e *.html'         
             }
