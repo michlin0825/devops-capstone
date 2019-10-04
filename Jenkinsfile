@@ -9,7 +9,9 @@ pipeline {
         
         stage ('Linting Project Files') {
             steps {
-                sh 'make all'          
+                sh 'make setup'
+                sh 'make install'
+                sh 'lint'
             }
         }
 
