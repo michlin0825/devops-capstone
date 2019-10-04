@@ -10,7 +10,6 @@ pipeline {
         stage ('Linting Project Files') {
             steps {
                 sh 'whoami'
-                sh 'pylint --disable=R,C,W1203 app.py'
                 sh 'tidy -q -e *.html'         
             }
         }
