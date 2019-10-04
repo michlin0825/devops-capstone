@@ -6,17 +6,15 @@ WORKDIR /app
 ## Step 2:
 COPY . app.py /app/
 
-
 ## Step 3:
 # Install packages from requirements.txt
 # hadolint ignore=DL3013
-RUN pip install --upgrade pip &&\
-    pip install --trusted-host pypi.python.org -r requirements.txt
-
+RUN pip3 install --trusted-host pypi.python.org -r requirements.txt
 
 ## Step 4:
 EXPOSE 80
 
 ## Step 5:
 CMD ["python3", "app.py"]
+
 
