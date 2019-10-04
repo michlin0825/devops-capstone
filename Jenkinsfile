@@ -10,6 +10,7 @@ pipeline {
         stage ('Linting Project Files') {
             steps {
                 sh 'whoami'
+                sh 'pip3 uninstall virtualenv'
                 sh 'pip3 install virtualenv'
                 sh 'virtualenv devops'                
                 sh 'source devops/bin/activate'
