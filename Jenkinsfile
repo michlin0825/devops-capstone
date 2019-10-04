@@ -9,9 +9,8 @@ pipeline {
         
         stage ('Linting Project Files') {
             steps {
-                sh 'pip3 install flask'
-                sh 'pip3 install pylint'
-                sh 'pylint app.py'
+                sh 'pip3 install flask pylint'
+                sh '/usr/local/bin/pylint app.py'
                 sh 'tidy -q -e *.html'         
             }
         }
