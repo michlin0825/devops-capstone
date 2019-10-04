@@ -11,7 +11,7 @@ pipeline {
             steps {
                 sh 'whoami'
                 sh 'pip3 install virtualenv'
-                sh 'virtualenv --python=/usr/bin/python3 .devops'                
+                sh 'virtualenv .devops'                
                 sh 'source .devops/bin/activate'
                 sh 'pip3 install -r requirements.txt'
                 sh 'pylint --disable=R,C,W1203 app.py'
