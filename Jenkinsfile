@@ -11,7 +11,8 @@ pipeline {
             steps {
                 sh 'whoami'
                 sh 'pip3 install virtualenv --user'
-                sh 'virtualenv test'                
+                sh 'PATH=$PATH:~/.local/bin' 
+                sh 'virtualenv test' 
                 sh 'source test/bin/activate'
                 sh 'pip3 install -r requirements.txt'
                 sh 'pylint --disable=R,C,W1203 app.py'
