@@ -42,7 +42,6 @@ pipeline {
             steps {
                 withAWS(credentials: 'AWS', region: 'us-east-1') {
                     script {
-                    sh 'pip3 install awscli --upgrade'
                     sh 'curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp'
                     sh 'sudo mv /tmp/eksctl /usr/local/bin'
                     sh 'eksctl version'
