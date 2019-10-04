@@ -11,7 +11,7 @@ pipeline {
             steps {
                 sh 'whoami'
                 sh 'pip3 uninstall virtualenv -y'
-                sh 'pip3 install virtualenv -y'
+                sh 'pip3 install virtualenv'
                 sh 'virtualenv devops'                
                 sh 'source devops/bin/activate'
                 sh 'pip3 install -r requirements.txt'
