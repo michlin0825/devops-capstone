@@ -47,8 +47,8 @@ pipeline {
             steps {
                 withAWS(credentials: 'AWS', region: 'us-east-1') {
                     sh 'curl -o kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/bin/linux/amd64/kubectl'
-		            sh 'pwd'
-		            sh 'ls'
+		    sh 'pwd'
+		    sh 'ls'
                     sh 'chmod +x ./kubectl'
                     sh './kubectl version --short --client'
                     sh './kubectl apply -f ./Deployment/webapp-deploy.yml'
