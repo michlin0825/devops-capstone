@@ -13,7 +13,7 @@ pipeline {
                 sh 'whoami'
                 sh 'pwd'
                 sh 'ls'
-                sh 'pip3 install pylint flask && pylint app.py --disable=missing-docstring'
+                sh 'sudo pylint app.py --disable=missing-docstring'
 		        sh 'dockerlint Dockerfile'         
             }
         }
