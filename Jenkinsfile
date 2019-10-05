@@ -28,11 +28,11 @@ pipeline {
             }
         }
 
-        stage('Uploading Docker Image') {
+        stage('Publishing Docker Image') {
             steps {
                 script {
                     withDockerRegistry([ credentialsId: "docker_hub", url: "" ]) {
-                    sh 'docker push michlin0825/devops-capstone'
+                    sh 'docker push michlin0825/devops-capstone:$BUILD_NUMBER'
                     }
                 }
             }
@@ -44,7 +44,7 @@ pipeline {
                     script {
                     sh 'curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp'
                     sh '/tmp/eksctl version'
-                    sh '/tmp/eksctl create cluster --name devops-capstone --version 1.14 --nodegroup-name standard-workers --node-type t3.medium --nodes 3 --nodes-min 1 --nodes-max 4 --node-ami auto'
+                    sh '/tmp/eksctl create cluster --name devops-capstone --region=us-east-1 --version 1.14 --nodegroup-name standard-workers --node-type t3.medium --nodes 3 --nodes-min 1 --nodes-max 4 --node-ami auto'
                     }
                 }
             }

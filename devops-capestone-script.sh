@@ -13,6 +13,10 @@ sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.
 # update patches
 sudo yum update -y
 
+# turn off priorities
+sudo nano /etc/yum/pluginconf.d/priorities.conf
+'enaled = 0'
+
 # install jenkins and java dependency
 sudo yum install java-1.8.0-openjdk.x86_64 -y
 sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
@@ -43,8 +47,11 @@ sudo systemctl status jenkins
 # install dependencies to faciliate jenkins build process
 sudo yum install tidy -y
 sudo yum install python3-pip -y
+sudo yum install nodejs -y # for installation of npm
+sudo npm install dockerlint -g
 sudo pip3 install flask
 sudo pip3 install pylint
+
 
 ## setup jenkins server on the console
 ## install blue ocean plugin and github integration
@@ -82,6 +89,7 @@ kubectl version --short --client
 # create eks cluster
 eksctl create cluster \
 --name devops-capstone \
+--region=us-east-1 \
 --version 1.14 \
 --nodegroup-name standard-workers \
 --node-type t3.medium \
@@ -92,9 +100,6 @@ eksctl create cluster \
 
 # verify eks installation
 kubectl get svc
-
-# deploy to eks cluster
-kubectl apply -f Deployment/webapp-deploy.yml
 
 
 ## trouble shooting resources
@@ -114,20 +119,6 @@ kubectl get svc
 # deploy to eks cluster
 kubectl apply -f Deployment/webapp-deploy.yml
 
-
-
-
-
-## other references
-# install python3
-sudo yum -y install yum-utils
-sudo yum -y groupinstall development
-sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
-sudo yum -y install python36u
-python3.6 -V
-sudo yum -y install python36u-pip
-pip3.6 install pandas
-sudo yum -y install python36u-devel
 
 
 ## other fixes
