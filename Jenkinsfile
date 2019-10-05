@@ -7,7 +7,7 @@ pipeline {
     agent any
     stages {
         
-        stage ('Linting Project Files') {
+        stage ('Linting Files') {
             steps {
                 sh 'tidy -q -e *.html'
 		        sh 'dockerlint Dockerfile'         
@@ -20,7 +20,7 @@ pipeline {
             }
         }
 
-        stage('Building Docker Image') {
+        stage('Building Image') {
             steps {
                 script {
                     sh 'docker build --tag=michlin0825/devops-capstone .'
@@ -28,7 +28,7 @@ pipeline {
             }
         }
 
-        stage('Publishing Docker Image') {
+        stage('Publishing Image') {
             steps {
                 script {
                     withDockerRegistry([ credentialsId: "docker_hub", url: "" ]) {
@@ -38,10 +38,11 @@ pipeline {
             }
         }
 
-        stage('Cleaning Image Artificat') {
+        stage('Cleaning Artificat') {
             steps{
                 sh "docker rmi $registry:$BUILD_NUMBER"
-
+            }
+        }
 
         stage ('Deploying to EKS') {
             steps {
