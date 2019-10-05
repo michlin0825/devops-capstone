@@ -54,6 +54,7 @@ pipeline {
                     sh 'chmod +x ./aws-iam-authenticator'
                     sh 'mkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator'
                     sh 'export PATH="$HOME/bin:$PATH"'
+                    sh 'echo $PATH'
                     sh 'aws eks update-kubeconfig --region us-east-1 --name devops-capstone' 
                     sh './kubectl apply -f webapp-deploy.yml'
                     sh 'sleep 5'
