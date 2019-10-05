@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: devops-capstone
-        image: michlin0825/devops-capstone:$BUILD_NUMBER
+        image: michlin0825/devops-capstone
         ports:
         - containerPort: 80
 ---
