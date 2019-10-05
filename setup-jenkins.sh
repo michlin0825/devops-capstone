@@ -3,7 +3,8 @@ sudo adduser jenkins
 sudo passwd jenkins
 sudo usermod -aG wheel jenkins
 sudo visudo
-'jenkins ALL = NOPASSWD: /usr/local/lib'
+'jenkins ALL=(ALL) NOPASSWD: ALL'
+
 su - jenkins
 exit
 
