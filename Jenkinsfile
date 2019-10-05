@@ -52,7 +52,7 @@ pipeline {
                     sh './kubectl version --short --client'
                     sh 'curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/bin/linux/amd64/aws-iam-authenticator'
                     sh 'chmod +x ./aws-iam-authenticator'
-                    sh 'sudo mkdir -p ~/home/jenkins/bin && sudo cp ./aws-iam-authenticator ~/home/jenkins/bin/aws-iam-authenticator && sudo export PATH=~/home/jenkins/bin:$PATH'
+                    sh 'sudo mkdir -p ~/home/jenkins/bin && sudo cp ./aws-iam-authenticator ~/home/jenkins/bin/aws-iam-authenticator && export PATH=~/home/jenkins/bin:$PATH'
                     sh 'aws eks update-kubeconfig --region us-east-1 --name devops-capstone' 
                     sh 'kubectl apply -f webapp-deploy.yml'
                     sh 'sleep 5'
