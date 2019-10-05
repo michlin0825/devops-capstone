@@ -2,9 +2,10 @@
 sudo adduser jenkins
 sudo passwd jenkins
 sudo usermod -aG wheel jenkins
+
+# add jenkins to sudoers
 sudo visudo
 'jenkins ALL=(ALL) NOPASSWD: ALL'
-
 su - jenkins
 exit
 
@@ -21,6 +22,7 @@ sudo nano /etc/yum/pluginconf.d/priorities.conf
 # install jenkins and java dependency
 sudo yum install java-1.8.0-openjdk.x86_64 -y
 sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+sudo yum install wget -y
 sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
 sudo yum install jenkins -y
 sudo systemctl start jenkins
@@ -38,20 +40,33 @@ sudo systemctl start docker
 sudo systemctl status docker
 # sudo docker run hello-world
 
+#REDHAT specific
+sudo yum remove docker docker-common docker-selinux docker-engine-selinux docker-engine docker-ce -y
+sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum install docker-ce --nobest -y
+sudo systemctl enable docker
+sudo systemctl start docker
+sudo systemctl status docker
+# sudo docker run hello-world
+
 # add jenkins user to docker group
 sudo usermod -aG docker jenkins
-# add jenkins to sudoers
+
+# install dependencies to faciliate jenkins build process
+sudo yum install tidy -y
+sudo yum install nodejs -y # for installation of npm
+sudo npm install dockerlint -g
+
+# sudo yum install python3-pip -y
+# sudo pip3 install flask
+# sudo pip3 install pylint
+
+# restart jenkins to reflect latest pathces 
 sudo systemctl enable jenkins
 sudo systemctl start jenkins
 sudo systemctl status jenkins
 
-# install dependencies to faciliate jenkins build process
-sudo yum install tidy -y
-sudo yum install python3-pip -y
-sudo yum install nodejs -y # for installation of npm
-sudo npm install dockerlint -g
-sudo pip3 install flask
-sudo pip3 install pylint
 
 ## setup jenkins server on the console
 ## install blue ocean plugin and github integration

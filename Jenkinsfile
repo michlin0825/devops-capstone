@@ -9,7 +9,7 @@ pipeline {
         
         stage ('Linting Files') {
             steps {
-                sh 'tidy -q -e *.html'
+                sh '#tidy -q -e *.html'
 		        sh 'dockerlint Dockerfile'         
             }
         }
