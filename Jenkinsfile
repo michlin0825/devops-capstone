@@ -10,7 +10,7 @@ pipeline {
         stage ('Linting Project Files') {
             steps {
                 sh 'tidy -q -e *.html'
-		sh 'hadolint Dockerfile'         
+		        sh 'dockerlint Dockerfile'         
             }
         }
 
