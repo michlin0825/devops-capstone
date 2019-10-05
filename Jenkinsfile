@@ -59,9 +59,8 @@ pipeline {
                     sh 'kubectl get pods'
                     sh 'sleep 15'
                     sh 'kubectl get pods'
-                    }
                 }
             }
-        }    
+        } 
     }
 }
