@@ -1,15 +1,9 @@
-#!/usr/bin/env python
-"""does things"""
 from flask import Flask
+app = Flask(__name__)
 
-APP = Flask(__name__)
-
-
-@APP.route("/")
-def home():
-    """does more things"""
-    return "hello devops!"
-
+@app.route("/")
+def hello():
+    return "Hello DevOps!"
 
 if __name__ == "__main__":
-    APP.run(host='0.0.0.0', port=80, debug=True)
+    app.run(host='0.0.0.0', port=80, debug=True)

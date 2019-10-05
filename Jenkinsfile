@@ -9,9 +9,8 @@ pipeline {
         
         stage ('Linting Project Files') {
             steps {
-                sh 'pip3 install flask pylint'
-                sh '/usr/local/bin/pylint app.py'
-                sh 'tidy -q -e *.html'         
+                sh 'tidy -q -e *.html'
+		sh 'hadolint Dockerfile'         
             }
         }
 
@@ -47,9 +46,10 @@ pipeline {
                     sh '/tmp/eksctl version'
                     sh '/tmp/eksctl create cluster --name devops-capstone --version 1.14 --nodegroup-name standard-workers --node-type t3.medium --nodes 3 --nodes-min 1 --nodes-max 4 --node-ami auto'
                     sh 'curl -o kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/bin/linux/amd64/kubectl'
+		    sh 'pwd'
+		    sh 'ls'
                     sh 'chmod +x ./kubectl'
                     sh './kubectl version --short --client'
-                    sh './kubectl get svc' 
                     sh './kubectl apply -f Deployment/webapp-deploy.yml'
                     }
                 }

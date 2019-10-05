@@ -1,15 +1,17 @@
 ## create jenkins user
 sudo adduser jenkins
 sudo passwd jenkins
-
-
-## set up Jenkins build server
-# update patches
-sudo yum update -y
+sudo usermod -aG wheel jenkins
+sudo visudo
+'jenkins ALL = NOPASSWD: /usr/local/lib'
+su - jenkins
+exit
 
 # Install and enable the EPEL rpm package on RHEL 7 and Amazon Linux 2
 sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
+# update patches
+sudo yum update -y
 
 # install jenkins and java dependency
 sudo yum install java-1.8.0-openjdk.x86_64 -y
@@ -22,7 +24,10 @@ sudo systemctl status jenkins
 sudo grep -A 5 password /var/log/jenkins/jenkins.log
 
 # install docker
-sudo yum install docker-ce docker-ce-cli containerd.io
+# sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+# sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+# sudo yum install docker-ce docker-ce-cli containerd.io --skip-broken
+sudo yum install docker -y
 sudo systemctl enable docker
 sudo systemctl start docker
 sudo systemctl status docker
@@ -36,17 +41,21 @@ sudo systemctl start jenkins
 sudo systemctl status jenkins
 
 # install dependencies to faciliate jenkins build process
-# sudo yum install tidy -y
-# sudo yum install pylint -y
-# sudo pip install pylint
-# sudo pip install flask 
-# sudo systemctl restart jenkins
-
+sudo yum install tidy -y
+sudo yum install python3-pip -y
+sudo pip3 install flask
+sudo pip3 install pylint
 
 ## setup jenkins server on the console
 ## install blue ocean plugin and github integration
 ## configure docker hub and aws pipeline credential 
 
+# install git
+sudo yum install git -y
+
+# clone repo
+git clone https://github.com/michlin0825/devops-capstone.git
+cd devops-capstone/
 
 
 
@@ -55,9 +64,8 @@ sudo systemctl status jenkins
 
 ## set up EKS cluster
 # install awscli and set aws credentials
-sudo yum -y install python-pip
-sudo pip install awscli -y
-aws configure
+# sudo pip3 install awscli -y
+# aws configure
 
 # install eksctl
 curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
@@ -111,13 +119,6 @@ kubectl apply -f Deployment/webapp-deploy.yml
 
 
 ## other references
-# install git
-sudo yum install git -y
-
-# clone repo
-git clone https://github.com/michlin0825/devops-capstone.git
-cd devops-capstone/
-
 # install python3
 sudo yum -y install yum-utils
 sudo yum -y groupinstall development
@@ -127,3 +128,10 @@ python3.6 -V
 sudo yum -y install python36u-pip
 pip3.6 install pandas
 sudo yum -y install python36u-devel
+
+
+## other fixes
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+export LC_COLLATE=C
+export LC_CTYPE=en_US.UTF-8
