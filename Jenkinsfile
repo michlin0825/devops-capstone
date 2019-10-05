@@ -13,7 +13,7 @@ pipeline {
                 sh 'whoami'
                 sh 'pwd'
                 sh 'ls'
-                sh 'sudo pylint app.py --disable=missing-docstring'
+                sh '/usr/local/bin/pylint app.py --disable=missing-docstring'
 		        sh 'dockerlint Dockerfile'         
             }
         }
