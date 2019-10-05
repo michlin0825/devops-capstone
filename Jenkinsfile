@@ -62,7 +62,7 @@ pipeline {
                     sh 'mkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$HOME/bin:$PATH'
                     sh '# echo $PATH'
                     sh '# /usr/local/bin/aws sts get-caller-identity'
-                    sh '/usr/local/bin/aws eks update-kubeconfig --region us-east-1 --name devops-capstone --verbose' 
+                    sh '/usr/local/bin/aws eks update-kubeconfig --region us-east-1 --name devops-capstone' 
                     sh './kubectl get svc'
                     sh 'kubectl apply -f webapp-deploy.yml'
                     sh 'sleep 10'
