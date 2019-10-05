@@ -37,6 +37,10 @@ mkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator
 echo 'export PATH=$HOME/bin:$PATH' >> ~/.bashrc
 aws-iam-authenticator help
 
+# install aws cli
+sudo yum install python3-pip -y
+sudo pip3 install awscli --upgrade
+
 # upate EKS config
 aws eks update-kubeconfig --region us-east-1 --name devops-capstone 
 
