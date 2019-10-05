@@ -23,7 +23,7 @@ pipeline {
         stage('Building Image') {
             steps {
                 script {
-                    sh 'docker build --tag=michlin0825/devops-capstone .'
+                    sh 'docker build --tag=michlin0825/devops-capstone:$BUILD_NUMBER .'
                 }
             }
         }
