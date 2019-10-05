@@ -10,6 +10,9 @@ pipeline {
         stage ('Linting Files') {
             steps {
                 sh '#tidy -q -e *.html'
+                sh 'whoami'
+                sh 'pwd'
+                sh 'ls'
                 sh 'pylint app.py --disable=missing-docstring'
 		        sh 'dockerlint Dockerfile'         
             }
