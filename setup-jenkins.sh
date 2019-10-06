@@ -54,16 +54,26 @@ sudo systemctl status docker
 sudo usermod -aG docker jenkins
 
 # install dependencies to faciliate jenkins build process
-sudo yum install tidy -y
+# sudo yum install tidy -y
 sudo yum install nodejs -y # for installation of npm
 sudo npm install dockerlint -g
+sudo yum install python3-pip -y
+sudo pip3 install flask
+sudo pip3 install pylint
 
-# sudo yum install python3-pip -y
-# sudo pip3 install flask
-# sudo pip3 install pylint
+# install dependencies for jenkins
+su - jenkins
+
+sudo yum install nodejs -y # for installation of npm
+sudo npm install dockerlint -g
+sudo yum install python3-pip -y
+sudo pip3 install flask
+sudo pip3 install pylint
+export PATH=/usr/local/bin/:$PATH
+
 
 # restart jenkins to reflect latest pathces 
-sudo systemctl enable jenkins
+sudo systemctl stop jenkins
 sudo systemctl start jenkins
 sudo systemctl status jenkins
 

@@ -1,11 +1,16 @@
 ## set up EKS cluster
 # install awscli and set aws credentials
-# sudo pip3 install awscli -y
-# aws configure
+sudo yum install python3-pip -y
+sudo pip3 install awscli --upgrade
+aws configure
+
+# export AWS_ACCESS_KEY_ID=
+# export AWS_SECRET_ACCESS_KEY=
+
 
 # install eksctl
 curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
-sudo mv /tmp/eksctl /usr/local/bin
+sudo mv /tmp/eksctl /usr/local/bins
 eksctl version
 
 # install kubectl 
@@ -30,7 +35,7 @@ eksctl create cluster \
 # verify eks installation
 kubectl get svc
 
-# install aws-iam-authenticator
+# install aws-iam-authenticator (if kubectl commands don't work)
 curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/bin/linux/amd64/aws-iam-authenticator
 chmod +x ./aws-iam-authenticator
 mkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$HOME/bin:$PATH
