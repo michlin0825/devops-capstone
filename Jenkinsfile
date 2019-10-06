@@ -67,12 +67,12 @@ pipeline {
                     sh 'pwd'
                     sh 'ls'
                     sh 'sudo find / -name "kubectl"'
-                    sh '/usr/local/bin/kubectl get svc'
-                    sh '/usr/local/bin/kubectl apply -f webapp-deploy.yml'
+                    sh '/var/lib/jenkins/workspace/devops-capstone_master/kubectl get svc'
+                    sh '/var/lib/jenkins/workspace/devops-capstone_master/kubectl apply -f webapp-deploy.yml'
                     sh 'sleep 10'
-                    sh '/usr/local/bin/kubectl get svc webapp-service'
+                    sh '/var/lib/jenkins/workspace/devops-capstone_master/kubectl get svc webapp-service'
                     sh 'sleep 10'
-                    sh '/usr/local/bin/kubectl get pods'
+                    sh '/var/lib/jenkins/workspace/devops-capstone_master/kubectl get pods'
                 }
             }
         } 
