@@ -8,6 +8,6 @@
 5. Wire Jenkins pipeline steps with `Jenkinsfile`. Process involves source code linting, image building, containerization, docker hub registration, and deployment to kubenetes. 
 
 ## Note 
-* kubenetes is created using eksctl, which in turn created two stacks of resources using cloudformation. Both files, `eksctl-devops-capstone-cluster.json` and `eksctl-devops-capstone-nodegroup-standard-workers.json` are included in 'cloudformation' folder for easy reference.
+* kubenetes is created using eksctl, which in turn creates two stacks of resources using cloudformation. Both files, `eksctl-devops-capstone-cluster.json` and `eksctl-devops-capstone-nodegroup-standard-workers.json` are included in 'cloudformation' folder for easy reference.
 * For rolling deployment, swapping in files from 'green' folder to overwrite copies in main directory. 
 * Screen shots of the entire workflow is saved in 'screenshots' folder for easy reference.   
