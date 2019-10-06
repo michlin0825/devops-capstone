@@ -44,7 +44,7 @@ pipeline {
 
         stage('Cleaning Artificat') {
             steps{
-                sh 'docker rmi $registry'
+                sh 'docker rmi $registry:green'
             }
         }
 
