@@ -61,6 +61,8 @@ pipeline {
                     sh 'chmod +x ./aws-iam-authenticator'
                     sh 'mkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$HOME/bin:$PATH'
                     sh 'pip3 install awscli --upgrade'
+                    sh 'which aws'
+                    sh 'echo $PATH'
                     sh '/usr/local/bin/aws s3 ls'
                     sh '/usr/local/bin/aws eks update-kubeconfig --region us-east-1 --name devops-capstone'
                     sh '/usr/local/bin/aws sts get-caller-identity'
