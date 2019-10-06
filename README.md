@@ -5,7 +5,7 @@
 2. Configure Github token on Jenkins console to pull source files.
 3. Configure Dockerhub credential on Jenkins console to push built image.  
 4. Setup Kubernetes on AWS EKS with cloudformation using commands in `setup_k8s.sh` in 'infra' folder.
-5. Wire Jenkins pipeline steps with `Jenkinsfile`. Process involves source code linting, image build, containerization, docker hub registration, and deployment to kubenetes. 
+5. Wire Jenkins pipeline steps with `Jenkinsfile`. Process involves source code linting, image building, containerization, docker hub registration, and deployment to kubenetes. 
 
 ## Note 
 * kubenetes is created using eksctl, which in turn created two stacks of resources using cloudformation. Both files, `eksctl-devops-capstone-cluster.json` and `eksctl-devops-capstone-nodegroup-standard-workers.json` are included in 'cloudformation' folder for easy reference.
