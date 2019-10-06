@@ -69,10 +69,11 @@ pipeline {
                     sh 'sudo find / -name "kubectl"'
                     sh 'cd /var/lib/jenkins/workspace/devops-capstone_master'
                     sh 'ls'
-                    sh 'kubectl get svc'
+                    sh 'kubectl get services'
+                    sh 'kubectl get pods'
                     sh 'kubectl apply -f webapp-deploy.yml'
                     sh 'sleep 10'
-                    sh 'kubectl get svc webapp-service'
+                    sh 'kubectl get services webapp-service'
                     sh 'sleep 10'
                     sh 'kubectl get pods'
                 }
