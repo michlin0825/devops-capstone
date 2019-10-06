@@ -61,18 +61,17 @@ pipeline {
                     sh 'chmod +x ./aws-iam-authenticator'
                     sh 'mkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$HOME/bin:$PATH'
                     sh 'sudo pip3 install awscli --upgrade'
-                    sh 'aws eks update-kubeconfig --region us-east-1 --name devops-capstone'
+                    sh '/usr/local/bin/aws eks update-kubeconfig --region us-east-1 --name devops-capstone'
                     sh '/usr/local/bin/aws sts get-caller-identity'
                     sh '/usr/local/bin/aws eks update-kubeconfig --region us-east-1 --name devops-capstone' 
                     sh 'pwd'
                     sh 'ls'
-                    sh 'which kubectl'
-                    sh 'kubectl get svc'
-                    sh 'kubectl apply -f webapp-deploy.yml'
+                    sh '/usr/local/bin/kubectl get svc'
+                    sh '/usr/local/bin/kubectl apply -f webapp-deploy.yml'
                     sh 'sleep 10'
-                    sh 'kubectl get svc webapp-service'
+                    sh '/usr/local/bin/kubectl get svc webapp-service'
                     sh 'sleep 10'
-                    sh 'kubectl get pods'
+                    sh '/usr/local/bin/kubectl get pods'
                 }
             }
         } 
