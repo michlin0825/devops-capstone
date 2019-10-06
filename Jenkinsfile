@@ -69,14 +69,13 @@ pipeline {
                     sh 'sudo find / -name "kubectl"'
                     sh 'cd /var/lib/jenkins/workspace/devops-capstone_master'
                     sh 'ls'
-                    sh 'export KUBECONFIG=~/.kube/config'
-                    sh 'kubectl get services --kubeconfig=~/.kube/config'
-                    sh 'kubectl get pods'
-                    sh 'kubectl apply -f webapp-deploy.yml'
+                    sh 'sudo kubectl get services'
+                    sh 'sudo kubectl get pods'
+                    sh 'sudo kubectl apply -f webapp-deploy.yml'
                     sh 'sleep 10'
-                    sh 'kubectl get services webapp-service'
+                    sh 'sudo kubectl get services webapp-service'
                     sh 'sleep 10'
-                    sh 'kubectl get pods'
+                    sh 'sudo kubectl get pods'
                 }
             }
         } 
