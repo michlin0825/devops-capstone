@@ -1,4 +1,4 @@
-## devops-capstone
+# devops-capstone
 
 ## Pipeline
 1. Setup Jenkins Server using commands in `setup_jenkins.sh` in the 'infra' folder.
