@@ -7,4 +7,4 @@
 5. Wire Jenkins pipeline steps with `Jenkinsfile`
 6. Build docker image with `Dockerfile`
 7. Publish webapp to Kubernetes with `webapp-deploy.yml`
-8. Check out webapp on browser
+8. Check out deployed webapp on browser
