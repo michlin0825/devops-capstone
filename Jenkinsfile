@@ -66,6 +66,7 @@ pipeline {
                     sh '/usr/local/bin/aws eks update-kubeconfig --region us-east-1 --name devops-capstone' 
                     sh 'pwd'
                     sh 'ls'
+                    sh 'sudo find / -name "kubectl"'
                     sh '/usr/local/bin/kubectl get svc'
                     sh '/usr/local/bin/kubectl apply -f webapp-deploy.yml'
                     sh 'sleep 10'
