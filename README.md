@@ -8,3 +8,5 @@
 6. Build docker image with `Dockerfile`.
 7. Publish webapp to Kubernetes with `webapp-deploy.yml`.
 8. Check out deployed webapp on browser.
+9. app.py is not used in deployment. It is included to use pylint as pre-built exercise. 
+10. kubenetes is created using EKSCTL cli, which in turn created two stacks of resources using cloudformation. Both files, `eksctl-devops-capstone-cluster.json` and `eksctl-devops-capstone-nodegroup-standard-workers.json` are included as reference. 
