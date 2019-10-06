@@ -50,26 +50,24 @@ pipeline {
 
         stage ('Deploying to EKS') {
             steps {
-                withAWS(credentials: 'AWS', region: 'us-east-1') {
-                    sh '# pwd'
-                    sh '# ls'
-                    sh 'curl -o kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/bin/linux/amd64/kubectl'
-                    sh 'chmod +x ./kubectl'
-                    sh 'mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH'
-                    sh '# which kubectl'
-                    sh 'kubectl version --short --client'
-                    sh 'curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/bin/linux/amd64/aws-iam-authenticator'
-                    sh 'chmod +x ./aws-iam-authenticator'
-                    sh 'mkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$HOME/bin:$PATH'
-                    sh '# pip3 install awscli --upgrade'
-                    sh '# which aws'
-                    sh 'aws eks update-kubeconfig --region us-east-1 --name devops-capstone'
-                    sh '# aws sts get-caller-identity'
-                    sh 'kubectl apply -f webapp-deploy.yml'
-                    sh 'sleep 5'
-                    sh 'kubectl get services'
-                    sh 'kubectl get pods'
-                }
+                sh '# pwd'
+                sh '# ls'
+                sh 'curl -o kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/bin/linux/amd64/kubectl'
+                sh 'chmod +x ./kubectl'
+                sh 'mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH'
+                sh '# which kubectl'
+                sh 'kubectl version --short --client'
+                sh 'curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/bin/linux/amd64/aws-iam-authenticator'
+                sh 'chmod +x ./aws-iam-authenticator'
+                sh 'mkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$HOME/bin:$PATH'
+                sh '# pip3 install awscli --upgrade'
+                sh '# which aws'
+                sh 'aws eks update-kubeconfig --region us-east-1 --name devops-capstone'
+                sh '# aws sts get-caller-identity'
+                sh 'kubectl apply -f webapp-deploy.yml'
+                sh 'sleep 5'
+                sh 'kubectl get services'
+                sh 'kubectl get pods'
             }
         } 
     }
