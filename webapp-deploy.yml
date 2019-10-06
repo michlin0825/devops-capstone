@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: devops-capstone
-        image: michlin0825/devops-capstone
+        image: michlin0825/devops-capstone:latest
         ports:
         - containerPort: 80
 ---
