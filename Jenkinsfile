@@ -64,7 +64,6 @@ pipeline {
                     sh '/usr/local/bin/aws eks update-kubeconfig --region us-east-1 --name devops-capstone'
                     sh '/usr/local/bin/aws sts get-caller-identity'
                     sh 'sudo find / -name "kubectl"'
-                    sh 'cd /var/lib/jenkins/workspace/devops-capstone_master'
                     sh 'pwd'
                     sh 'ls'
                     sh './kubectl get services'
