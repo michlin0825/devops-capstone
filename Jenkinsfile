@@ -70,7 +70,7 @@ pipeline {
                     sh 'cd /var/lib/jenkins/workspace/devops-capstone_master'
                     sh 'ls'
                     sh 'export KUBECONFIG=~/.kube/config'
-                    sh 'kubectl get services'
+                    sh 'kubectl get services --kubeconfig=~/.kube/config'
                     sh 'kubectl get pods'
                     sh 'kubectl apply -f webapp-deploy.yml'
                     sh 'sleep 10'
