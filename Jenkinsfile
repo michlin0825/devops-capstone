@@ -69,7 +69,6 @@ pipeline {
                     sh 'sleep 5'
                     sh 'kubectl get services'
                     sh 'kubectl get pods'
-                    sh 'kubectl describe pods'
                 }
             }
         } 
