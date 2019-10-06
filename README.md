@@ -9,6 +9,6 @@
 7. Publish webapp to Kubernetes with `webapp-deploy.yml`.
 8. Check out deployed webapp on browser.
 9. app.py is not used in deployment. It is included to test drive pylint as a pre-built exercise. 
-10. kubenetes is created using EKSCTL, which in turn created two stacks of resources using cloudformation. Both files, `eksctl-devops-capstone-cluster.json` and `eksctl-devops-capstone-nodegroup-standard-workers.json` are included in 'cloudformation' forder for easy reference.
+10. kubenetes is created using eksctl, which in turn created two stacks of resources using cloudformation. Both files, `eksctl-devops-capstone-cluster.json` and `eksctl-devops-capstone-nodegroup-standard-workers.json` are included in 'cloudformation' folder for easy reference.
 11. To test rolling deployment, swap in files from 'green' folder to overwrite counterpart copies in main directory. 
 12. Screen shots of the entire workflow is saved in 'screenshots' folder for easy reference.   
