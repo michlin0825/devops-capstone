@@ -9,6 +9,7 @@ sudo visudo
 su - jenkins
 exit
 
+
 # Install and enable the EPEL rpm package on RHEL 7 and Amazon Linux 2
 sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
@@ -76,6 +77,7 @@ sudo systemctl status jenkins
 ## setup jenkins server on the console
 ## install blue ocean plugin and github integration
 ## configure docker hub and aws credential 
+## configure environment variables in Jenins system/global properties
 
 # install git
 sudo yum install git -y
