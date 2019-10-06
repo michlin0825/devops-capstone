@@ -7,7 +7,6 @@ aws configure
 # export AWS_ACCESS_KEY_ID=
 # export AWS_SECRET_ACCESS_KEY=
 
-
 # install eksctl
 curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
 sudo mv /tmp/eksctl /usr/local/bins
@@ -20,7 +19,7 @@ mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$P
 echo 'export PATH=$HOME/bin:$PATH' >> ~/.bashrc
 kubectl version --short --client
 
-# create eks cluster
+# create eks cluster with cloudformation
 eksctl create cluster \
 --name devops-capstone \
 --region=us-east-1 \

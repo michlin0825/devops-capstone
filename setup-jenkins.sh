@@ -53,15 +53,7 @@ sudo systemctl status docker
 # add jenkins user to docker group
 sudo usermod -aG docker jenkins
 
-# install dependencies to faciliate jenkins build process
-# sudo yum install tidy -y
-sudo yum install nodejs -y # for installation of npm
-sudo npm install dockerlint -g
-sudo yum install python3-pip -y
-sudo pip3 install flask
-sudo pip3 install pylint
-
-# install dependencies for jenkins
+# install dependencies for jenkins user
 su - jenkins
 
 sudo yum install nodejs -y # for installation of npm
@@ -71,16 +63,19 @@ sudo pip3 install flask
 sudo pip3 install pylint
 export PATH=/usr/local/bin/:$PATH
 
+# set up aws credentials for jenkins user
+sudo yum install python3-pip -y
+sudo pip3 install awscli --upgrade
+aws configure
 
 # restart jenkins to reflect latest pathces 
 sudo systemctl stop jenkins
 sudo systemctl start jenkins
 sudo systemctl status jenkins
 
-
 ## setup jenkins server on the console
 ## install blue ocean plugin and github integration
-## configure docker hub and aws pipeline credential 
+## configure docker hub and aws credential 
 
 # install git
 sudo yum install git -y
