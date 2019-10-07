@@ -1,8 +1,8 @@
 # devops-capstone
 
-[!](https://github.com/michlin0825/devops-capstone/blob/master/capstone_top.jpg)
+![Jenkins Pipeline](https://github.com/michlin0825/devops-capstone/blob/master/capstone_top.jpg)
 
-## Pipeline
+## Steps
 1. Setup Jenkins Server using commands in `setup_jenkins.sh` in the 'infra' folder.
 2. Configure Github token on Jenkins console to pull source files.
 3. Configure Dockerhub credential on Jenkins console to push built image.  
