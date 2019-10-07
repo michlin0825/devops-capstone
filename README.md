@@ -1,6 +1,6 @@
 # devops-capstone
 
-[![CircleCI](https://circleci.com/gh/michlin0825/Udacity_DevOps_Microservice.svg?style=svg)](https://circleci.com/gh/michlin0825/Udacity_DevOps_Microservice)
+[!](https://github.com/michlin0825/devops-capstone/blob/master/capstone_top.jpg)
 
 ## Pipeline
 1. Setup Jenkins Server using commands in `setup_jenkins.sh` in the 'infra' folder.
