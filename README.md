@@ -1,5 +1,7 @@
 # devops-capstone
 
+[![CircleCI](https://circleci.com/gh/michlin0825/Udacity_DevOps_Microservice.svg?style=svg)](https://circleci.com/gh/michlin0825/Udacity_DevOps_Microservice)
+
 ## Pipeline
 1. Setup Jenkins Server using commands in `setup_jenkins.sh` in the 'infra' folder.
 2. Configure Github token on Jenkins console to pull source files.
