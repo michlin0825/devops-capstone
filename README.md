@@ -1,6 +1,6 @@
 # devops-capstone
 
-![Jenkins Pipeline](https://github.com/michlin0825/devops-capstone/blob/master/capstone_top.jpg)
+(https://github.com/michlin0825/devops-capstone/blob/master/capstone_top.jpg)
 
 ## Steps
 1. Setup Jenkins Server using commands in `setup_jenkins.sh` in the 'infra' folder.
