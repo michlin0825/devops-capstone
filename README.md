@@ -1,5 +1,3 @@
-# devops-capstone
-
 ![jenkins](https://github.com/michlin0825/devops-capstone/blob/master/capstone_top.jpg)
 
 ## Steps
