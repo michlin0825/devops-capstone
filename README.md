@@ -4,7 +4,7 @@
 ## Udacity DevOps Engineer Capstone
 
 ### Summary
-The capstone uses infastructure as code to stand up Jenkins server and EKS cluster on AWS. Jenkins' pipeline enables continuous integration and continuous deployment, while kubernetes cluster host microservice for the sample app. 
+The capstone uses infastructure as code to stand up Jenkins server and EKS cluster on AWS. Jenkins' pipeline enables continuous integration and continuous deployment, while k8s cluster hosts microservice for the sample app. 
 
 
 ### Workflow
